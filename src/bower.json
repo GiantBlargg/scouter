@@ -1,0 +1,32 @@
+{
+  "name": "Scouter",
+  "version": "0.0.0-dev",
+  "authors": [
+    "Giantblargg <ddoran3@gmail.com>"
+  ],
+  "description": "A nobackend app based on angularjs and remoteStorage, developed as an in-house FRC scouting tool.",
+  "main": "index.html",
+  "keywords": [
+    "FRC",
+    "Scouter",
+    "Angular",
+    "remoteStorage"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.1.1",
+    "requirejs": "~2.1.11",
+    "less": "~1.7.0",
+    "fontawesome": "~4.0.3",
+    "angularjs": "*",
+    "remotestorage": "~0.9.0"
+  }
+}

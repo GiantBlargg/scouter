@@ -1,0 +1,7 @@
+*.class
+*.pyc
+*.pyo
+.project
+build
+node_modules
+src/bower_components
