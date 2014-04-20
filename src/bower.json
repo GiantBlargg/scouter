@@ -26,7 +26,7 @@
     "requirejs": "~2.1.11",
     "less": "~1.7.0",
     "fontawesome": "~4.0.3",
-    "angularjs": "*",
-    "remotestorage": "~0.9.0"
+    "remotestorage": "~0.9.0",
+    "angular": "~1.2.16"
   }
 }
