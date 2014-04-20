@@ -1,5 +1,5 @@
 {
-  "name": "Scouter",
+  "name": "scouter",
   "version": "0.0.0-dev",
   "description": "A nobackend app based on angularjs and remoteStorage, developed as an in-house FRC scouting tool.",
   "private": true,
