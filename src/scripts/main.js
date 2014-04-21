@@ -13,4 +13,6 @@ define(["angular", "remoteStorage", "ngRoute"], function(angular, remoteStorage)
     angular.element(document).ready(function() {
         angular.bootstrap(document, ["main"]);
     });
+    
+    remoteStorage.displayWidget("login");
 });
