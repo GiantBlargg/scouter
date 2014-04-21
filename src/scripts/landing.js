@@ -9,6 +9,8 @@ requirejs.config({
         jquery : "jquery/dist/jquery.min",
         bootstrap : "bootstrap/dist/js/bootstrap.min",
         angular : "angular/angular.min",
+        ngRoute : "angular-route/angular-route.min",
+        ngResource : "angular-resource/angular-resource.min",
         remoteStorage : "remotestorage/remotestorage.amd"
     },
     shim : {
@@ -16,9 +18,15 @@ requirejs.config({
             deps : ["jquery"]
         },
         angular : {
-            exports: "angular"
+            exports : "angular"
+        },
+        ngRoute : {
+            deps : ["angular"]
+        },
+        ngResource : {
+            deps : ["angular"]
         }
     },
     //init modules
-    deps:["bootstrap", "angular", "app/main"]
+    deps : ["bootstrap", "ngRoute", "ngResource", "app/main"]
 });
