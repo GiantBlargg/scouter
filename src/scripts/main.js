@@ -1,11 +1,16 @@
 /**
  * @author Daniel
  */
+define(["angular", "remoteStorage", "ngRoute"], function(angular, remoteStorage) {
+    angular.module("main", ["ngRoute"]).config(function($routeProvider) {
+        $routeProvider.when("/dash", {
+            templateUrl : "views/dash.html"
+        }).otherwise({
+            redirectTo : "/dash"
+        });
+    });
 
-define(["angular","remoteStorage"], function (angular,remoteStorage) {
-    angular.module("main",["ngRoute"]);
-    
     angular.element(document).ready(function() {
-      angular.bootstrap(document, ["main"]);
+        angular.bootstrap(document, ["main"]);
     });
 });

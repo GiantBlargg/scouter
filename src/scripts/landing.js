@@ -28,5 +28,5 @@ requirejs.config({
         }
     },
     //init modules
-    deps : ["bootstrap", "ngRoute", "ngResource", "app/main"]
+    deps : ["bootstrap", "ngResource", "app/main"]
 });
