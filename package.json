@@ -4,7 +4,11 @@
   "description": "A nobackend app based on angularjs and remoteStorage, developed as an in-house FRC scouting tool.",
   "private": true,
   "scripts": {
-    "test": "grunt build"
+    "postinstall": "bower install",
+    
+    "start": "http-server -p 8000",
+    
+    "restore": "node restore/restore.js"
   },
   "keywords": [
     "FRC",
@@ -20,6 +24,8 @@
     "grunt-contrib-requirejs": "^0.4.3",
     "grunt-contrib-less": "^0.11.0",
     "grunt-contrib-clean": "^0.5.0",
-    "grunt-contrib-copy": "^0.5.0"
+    "grunt-contrib-copy": "^0.5.0",
+    "http-server": "^0.6.1",
+    "restore": "^0.2.0"
   }
 }
