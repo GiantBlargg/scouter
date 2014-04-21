@@ -13,16 +13,26 @@ module.exports = function(grunt) {
                 expand : true,
                 cwd : 'src/styles',
                 src : '*.less',
-                dest : 'build/styles/',
+                dest : 'build',
                 ext : '.css'
+            }
+        },
+        requirejs : {
+            build : {
+                options : {
+                    baseUrl : "bower_components",
+                    out : 'build/main.js',
+                    mainConfigFile : "src/scripts/init.js",
+                    name : "init"
+                }
             }
         }
     });
-
-    // Load the plugin that provides the "uglify" task.
+    
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-requirejs');
 
-    // Default task(s).
-    grunt.registerTask('default', ['less']);
+    grunt.registerTask('default', ['build']);
+    grunt.registerTask('build', ["less", "requirejs"]);
 
 };
