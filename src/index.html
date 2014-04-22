@@ -42,12 +42,15 @@
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li class="active">
-                            <a href="#">Events</a>
+                    <ul class="nav navbar-nav" ng-controller="nav">
+                        <li ng-class="{active: path('/dash')}">
+                            <a href="#/dash">Dashboard</a>
                         </li>
-                        <li>
-                            <a href="#">Teams</a>
+                        <li ng-class="{active: path('/events')}">
+                            <a href="#/events">Events</a>
+                        </li>
+                        <li ng-class="{active: path('/teams')}">
+                            <a href="#/teams">Teams</a>
                         </li>
                     </ul>
                     <form class="navbar-form navbar-right" role="search">

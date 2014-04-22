@@ -1,3 +1,5 @@
+process.umask(077);
+
 var reStore = require('restore'), store = new reStore.FileTree({
     path : __dirname + '/data'
 }), server = new reStore({

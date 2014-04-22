@@ -27,6 +27,8 @@
     "less": "~1.7.0",
     "fontawesome": "~4.0.3",
     "remotestorage": "~0.9.0",
-    "angular": "~1.2.16"
+    "angular": "~1.2.16",
+    "angular-route": "~1.2.16",
+    "angular-resource": "~1.2.16"
   }
 }
