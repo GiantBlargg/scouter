@@ -14,10 +14,10 @@ define(["angular", "remoteStorage", "ngRoute", "app/RSModule"], function(angular
         }).otherwise({
             redirectTo : "/dash"
         });
-    }).controller("nav", function ($scope, $location) {
-        $scope.path=function (path) {
+    }).controller("nav", function($scope, $location) {
+        $scope.path = function(path) {
             return $location.path().indexOf(path) > -1;
-        };      
+        };
     });
 
     angular.element(document).ready(function() {
