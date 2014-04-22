@@ -10,7 +10,7 @@ define(["angular", "remoteStorage", "ngRoute", "app/RSModule"], function(angular
             templateUrl : "views/list.html"
         }).when("/teams", {
             controller : "TeamsList",
-            templateUrl : "views/list.html"
+            templateUrl : "views/teamList.html"
         }).otherwise({
             redirectTo : "/dash"
         });
