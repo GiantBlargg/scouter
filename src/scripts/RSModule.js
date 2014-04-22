@@ -4,21 +4,45 @@
 define(["remoteStorage"], function(remoteStorage) {
 
     remoteStorage.defineModule("FRCScouting", function(privateClient, publicClient) {
-
+        
+        var TeamClient = privateClient.scope("teams");
+        
         // Define a common data type using JSON Schema
         privateClient.declareType("Team", {
-            "description" : "an object representing a team",
+            "description" : "An object representing a team",
             "type" : "object",
             "properties" : {
-                "id" : {
-                    "type" : "string",
-                    "format" : "id"
+                "number" : {
+                    "type" : "number"
                 },
-                "title" : {
+                "nickname" : {
                     "type" : "string"
                 },
-                "completed" : {
-                    "type" : "boolean"
+                "name" : {
+                    "type" : "string"
+                },
+                "location" : {
+                    "type" : "object",
+                    "properties" : {
+                        "locality" : {
+                            "type" : "string"
+                        },
+                        "region" : {
+                            "type" : "string"
+                        },
+                        "country" : {
+                            "type" : "string"
+                        },
+                        "location" : {
+                            "type" : "string"
+                        },
+                    }
+                },
+                "website" : {
+                    "type" : "string"
+                },
+                "events" : {
+                    "type" : "array"
                 }
             }
         });
@@ -39,4 +63,6 @@ define(["remoteStorage"], function(remoteStorage) {
             }
         };
     });
-}); 
+
+    remoteStorage.access.claim("FRCScouting", "rw");
+});
