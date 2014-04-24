@@ -1,4 +1,7 @@
-<a href="#/teams/new" class="btn btn-primary btn-lg btn-block">Add a new team</a>
+<div class="left-inner-addon ">
+    <i class="fa fa-search fa-lg"></i>
+    <input type="search" class="form-control input-lg" placeholder="Search" ng-model="search" />
+</div>
 
 <table class="table table-hover">
     <thead>
@@ -6,7 +9,7 @@
             <th>#</th><th>Name</th><th>Long Name</th><th>Location</th>
         </tr>
     </thead>
-    <tr ng-repeat="team in teams" ng-click="goTo(number)" style="cursor:pointer">
+    <tr ng-repeat="team in teams| filter:search" ng-click="goTo(number)" style="cursor:pointer">
         <td>{{team.key}}</td><td>{{team.hash.nickname}}</td><td>{{team.hash.name}}</td><td>{{team.hash.location.locality}}, {{team.hash.location.region}}, {{team.hash.location.country}}</td>
     </tr>
 </table>

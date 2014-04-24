@@ -1,6 +1,6 @@
 <div class="left-inner-addon ">
     <i class="fa fa-search fa-lg"></i>
-    <input type="search" class="form-control input-lg" placeholder="Search" />
+    <input type="search" class="form-control input-lg" placeholder="Search" ng-model="search" />
 </div>
 
 <table class="table table-hover">
@@ -9,7 +9,7 @@
             <th>Year</th><th>Name</th><th>Location</th><th>Date</th>
         </tr>
     </thead>
-    <tr ng-repeat="event in events" ng-click="goTo(id)" style="cursor:pointer">
+    <tr ng-repeat="event in events | orderBy:'-hash.start_date' | filter:search" ng-click="goTo(id)" style="cursor:pointer">
         <td>{{event.hash.year}}</td><td>{{event.hash.short_name}} {{event.has.event_type_string}}</td><td>{{event.hash.location}}</td><td>{{event.hash.start_date}}</td>
     </tr>
 </table>
