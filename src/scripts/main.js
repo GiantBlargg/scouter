@@ -7,7 +7,7 @@ define(["angular", "remoteStorage", "ngRoute", "app/RSModule"], function(angular
             templateUrl : "views/dash.html"
         }).when("/events", {
             controller : "EventList",
-            templateUrl : "views/list.html"
+            templateUrl : "views/eventsList.html"
         }).when("/teams", {
             controller : "TeamsList",
             templateUrl : "views/teamList.html"
@@ -18,11 +18,66 @@ define(["angular", "remoteStorage", "ngRoute", "app/RSModule"], function(angular
         $scope.path = function(path) {
             return $location.path().indexOf(path) > -1;
         };
+    }).controller("EventList", function($scope, $location) {
+        $scope.goTo = function(id) {
+            $location.path('/events/' + id);
+        };
+        $scope.events = {
+            "2014abca" : {
+                "end_date" : "2014-04-05",
+                "short_name" : "Western Canada",
+                "facebook_eid" : null,
+                "official" : true,
+                "location" : "Calgary, AB, Canada",
+                "event_code" : "abca",
+                "year" : 2014,
+                "event_type_string" : "Regional",
+                "start_date" : "2014-04-03",
+                "event_type" : 0
+            },
+            "2013abca" : {
+                "end_date" : "2013-04-06",
+                "short_name" : "Western Canadian",
+                "facebook_eid" : null,
+                "official" : true,
+                "location" : null,
+                "event_code" : "abca",
+                "year" : 2013,
+                "event_type_string" : "Regional",
+                "start_date" : "2013-04-04",
+                "event_type" : 0
+            }
+        };
+    }).controller("TeamsList", function($scope, $location) {
+        $scope.goTo = function(id) {
+            $location.path('/teams/' + id);
+        };
+        $scope.teams = {
+            "4606" : {
+                "nickname" : "LARRY",
+                "name" : "We are LARRY",
+                "location" : {
+                    "locality" : "Calgary",
+                    "region" : "AB",
+                    "country" : "CA"
+                }
+            },
+            "5116" : {
+                "nickname" : "Silicon Claymore",
+                "name" : "Places that sponsor us",
+                "location" : {
+                    "locality" : "Calgary",
+                    "region" : "AB",
+                    "country" : "CA"
+                }
+            }
+        };
     });
 
     angular.element(document).ready(function() {
         angular.bootstrap(document, ["main"]);
+        remoteStorage.FRCScouting.init();
+        remoteStorage.displayWidget("login");
     });
 
-    remoteStorage.displayWidget("login");
 });
