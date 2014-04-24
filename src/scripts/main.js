@@ -73,11 +73,4 @@ define(["angular", "remoteStorage", "ngRoute", "app/RSModule"], function(angular
             }
         };
     });
-
-    angular.element(document).ready(function() {
-        angular.bootstrap(document, ["main"]);
-        remoteStorage.FRCScouting.init();
-        remoteStorage.displayWidget("login");
-    });
-
 });

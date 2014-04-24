@@ -30,3 +30,10 @@ requirejs.config({
     //init modules
     deps : ["bootstrap", "ngResource", "app/main"]
 });
+requirejs(["angular", "remoteStorage", "bootstrap", "ngResource", "app/main"], function(angular, remoteStorage) {
+    angular.element(document).ready(function() {
+        angular.bootstrap(document, ["main"]);
+        remoteStorage.FRCScouting.init();
+        remoteStorage.displayWidget("login");
+    });
+});
