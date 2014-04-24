@@ -6,6 +6,7 @@ define(["remoteStorage"], function(remoteStorage) {
     remoteStorage.defineModule("FRCScouting", function(privateClient, publicClient) {
 
         var teamClient = privateClient.scope("teams/");
+        var eventClient = privateClient.scope("event/");
 
         // Define a common data type using JSON Schema
         teamClient.declareType("Team", {
@@ -41,17 +42,54 @@ define(["remoteStorage"], function(remoteStorage) {
             }
         });
 
+        eventClient.declareType("Event", {
+            "description" : "An object representing a team",
+            "type" : "object",
+            "properties" : {
+                "end_date" : {
+                    "type" : "string"
+                },
+                "short_name" : {
+                    "type" : "string"
+                },
+                "official" : {
+                    "type" : "boolean"
+                },
+                "location" : {
+                    "type" : "string"
+                },
+                "event_code" : {
+                    "type" : "string"
+                },
+                "year" : {
+                    "type" : "number"
+                },
+                "event_type_string" : {
+                    "type" : "string"
+                },
+                "start_date" : {
+                    "type" : "string"
+                },
+                "event_type" : {
+                    "type" : "number"
+                },
+                "teams" : {
+                    "type" : "array"
+                }
+            }
+        });
+
         return {
             exports : {
                 init : function() {
                     privateClient.cache('');
                 },
-                // Add functions for retrieving and manipulating data using
-                // methods provided by BaseClient
                 listTeams : function() {
                     return teamClient.getAll("");
+                },
+                listEvents : function () {
+                    return eventClient.getAll("");
                 }
-                // define more functions...
             }
         };
     });
