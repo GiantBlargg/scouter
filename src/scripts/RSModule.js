@@ -4,17 +4,14 @@
 define(["remoteStorage"], function(remoteStorage) {
 
     remoteStorage.defineModule("FRCScouting", function(privateClient, publicClient) {
-        
-        var TeamClient = privateClient.scope("teams");
-        
+
+        var teamClient = privateClient.scope("teams/");
+
         // Define a common data type using JSON Schema
-        privateClient.declareType("Team", {
+        teamClient.declareType("Team", {
             "description" : "An object representing a team",
             "type" : "object",
             "properties" : {
-                "number" : {
-                    "type" : "number"
-                },
                 "nickname" : {
                     "type" : "string"
                 },
@@ -32,10 +29,7 @@ define(["remoteStorage"], function(remoteStorage) {
                         },
                         "country" : {
                             "type" : "string"
-                        },
-                        "location" : {
-                            "type" : "string"
-                        },
+                        }
                     }
                 },
                 "website" : {
@@ -49,15 +43,13 @@ define(["remoteStorage"], function(remoteStorage) {
 
         return {
             exports : {
+                init : function() {
+                    privateClient.cache('');
+                },
                 // Add functions for retrieving and manipulating data using
                 // methods provided by BaseClient
-                addTask : function(title) {
-                    var id = new Date().getTime().toString();
-                    return privateClient.storeObject('task', id, {
-                        id : id,
-                        title : title,
-                        completed : false
-                    });
+                listTeams : function() {
+                    return teamClient.getAll("");
                 }
                 // define more functions...
             }

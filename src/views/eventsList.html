@@ -1,0 +1,12 @@
+<a href="#/teams/new" class="btn btn-primary btn-lg btn-block">Add a new event</a>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Year</th><th>Name</th><th>Location</th><th>Date</th>
+        </tr>
+    </thead>
+    <tr ng-repeat="(id,details) in events" ng-click="goTo(id)" style="cursor:pointer">
+        <td>{{details.year}}</td><td>{{details.short_name}} {{details.event_type_string}}</td><td>{{details.location}}</td><td>{{details.start_date}}</td>
+    </tr>
+</table>
