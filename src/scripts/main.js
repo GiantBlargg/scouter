@@ -1,7 +1,7 @@
 /**
  * @author Daniel
  */
-define(["angular", "remoteStorage", "ngRoute", "app/RSModule"], function(angular, remoteStorage) {
+define(["angular", "remoteStorage", "app/Object2Array", "ngRoute", "app/RSModule"], function(angular, remoteStorage, Object2Array) {
     angular.module("main", ["ngRoute"]).config(function($routeProvider) {
         $routeProvider.when("/dash", {
             templateUrl : "views/dash.html"
@@ -22,7 +22,7 @@ define(["angular", "remoteStorage", "ngRoute", "app/RSModule"], function(angular
         $scope.goTo = function(id) {
             $location.path('/events/' + id);
         };
-        $scope.events = {
+        $scope.events = Object2Array({
             "2014abca" : {
                 "end_date" : "2014-04-05",
                 "short_name" : "Western Canada",
@@ -47,12 +47,12 @@ define(["angular", "remoteStorage", "ngRoute", "app/RSModule"], function(angular
                 "start_date" : "2013-04-04",
                 "event_type" : 0
             }
-        };
+        });
     }).controller("TeamsList", function($scope, $location) {
         $scope.goTo = function(id) {
             $location.path('/teams/' + id);
         };
-        $scope.teams = {
+        $scope.teams = Object2Array({
             "4606" : {
                 "nickname" : "LARRY",
                 "name" : "We are LARRY",
@@ -71,6 +71,6 @@ define(["angular", "remoteStorage", "ngRoute", "app/RSModule"], function(angular
                     "country" : "CA"
                 }
             }
-        };
+        });
     });
 });

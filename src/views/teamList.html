@@ -6,7 +6,7 @@
             <th>#</th><th>Name</th><th>Long Name</th><th>Location</th>
         </tr>
     </thead>
-    <tr ng-repeat="(number,details) in teams" ng-click="goTo(number)" style="cursor:pointer">
-        <td>{{number}}</td><td>{{details.nickname}}</td><td>{{details.name}}</td><td>{{details.location.locality}}, {{details.location.region}}, {{details.location.country}}</td>
+    <tr ng-repeat="team in teams" ng-click="goTo(number)" style="cursor:pointer">
+        <td>{{team.key}}</td><td>{{team.hash.nickname}}</td><td>{{team.hash.name}}</td><td>{{team.hash.location.locality}}, {{team.hash.location.region}}, {{team.hash.location.country}}</td>
     </tr>
 </table>

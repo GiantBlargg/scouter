@@ -9,7 +9,7 @@
             <th>Year</th><th>Name</th><th>Location</th><th>Date</th>
         </tr>
     </thead>
-    <tr ng-repeat="(id,details) in events" ng-click="goTo(id)" style="cursor:pointer">
-        <td>{{details.year}}</td><td>{{details.short_name}} {{details.event_type_string}}</td><td>{{details.location}}</td><td>{{details.start_date}}</td>
+    <tr ng-repeat="event in events" ng-click="goTo(id)" style="cursor:pointer">
+        <td>{{event.hash.year}}</td><td>{{event.hash.short_name}} {{event.has.event_type_string}}</td><td>{{event.hash.location}}</td><td>{{event.hash.start_date}}</td>
     </tr>
 </table>
