@@ -11,7 +11,7 @@ requirejs.config({
         angular : "angular/angular.min",
         ngRoute : "angular-route/angular-route.min",
         ngResource : "angular-resource/angular-resource.min",
-        remoteStorage : "remotestorage/remotestorage.amd"
+        remoteStorage : "../src/scripts/remotestorage.amd.test"
     },
     shim : {
         bootstrap : {
