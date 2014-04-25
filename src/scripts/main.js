@@ -22,13 +22,12 @@ define(["angular", "remoteStorage", "app/Object2Array", "ngRoute", "app/RSModule
         $scope.goTo = function(id) {
             $location.path('/events/' + id);
         };
-        $scope.remoteLoad = $resource("http://www.thebluealliance.com/api/v2/events/:year", {
+        $scope.remote = $resource("http://www.thebluealliance.com/api/v2/events/:year", {
             year : function() {
                 return new Date().getFullYear();
             },
             "X-TBA-App-Id" : "frc5116:Scouter:0.0.0"
-        });
-        $scope.remote = $scope.remoteLoad.query();
+        }).query();
         $scope.events = Object2Array({
             "2014abca" : {
                 "end_date" : "2014-04-05",
