@@ -3,24 +3,32 @@
     <input type="search" class="form-control input-lg" placeholder="Search" ng-model="search" />
 </div>
 
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>Year</th><th>Name</th><th>Location</th><th>Date</th>
-        </tr>
-    </thead>
-    <tr ng-repeat="event in events | orderBy:'-hash.start_date' | filter:search" ng-click="goTo(event.key)" style="cursor:pointer">
-        <td>{{event.hash.year}}</td><td>{{event.hash.short_name}} {{event.hash.event_type_string}}</td><td>{{event.hash.location}}</td><td>{{event.hash.start_date}}</td>
-    </tr>
-</table>
+<div ng-show="events | filter:search">
+    <h2>Stored Events</h2>
 
-<table class="table table-hover" ng-show="search">
-    <thead>
-        <tr>
-            <th>Year</th><th>Name</th><th>Location</th><th>Date</th>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Year</th><th>Name</th><th>Location</th><th>Date</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="event in events | orderBy:'-hash.start_date' | filter:search" ng-click="goTo(event.key)" style="cursor:pointer">
+            <td>{{event.hash.year}}</td><td>{{event.hash.short_name}} {{event.hash.event_type_string}}</td><td>{{event.hash.location}}</td><td>{{event.hash.start_date}}</td>
         </tr>
-    </thead>
-    <tr ng-repeat="event in remote | orderBy:'-start_date' | filter:search" ng-click="goTo(id)" style="cursor:pointer">
-        <td>{{event.year}}</td><td>{{event.short_name}} {{event.event_type_string}}</td><td>{{event.location}}</td><td>{{event.start_date}}</td>
-    </tr>
-</table>
+    </table>
+</div>
+
+<div ng-show="search">
+    <h2>New Events</h2>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Year</th><th>Name</th><th>Location</th><th>Date</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="event in remote | orderBy:'-start_date' | filter:search" ng-click="pop(event.key)" style="cursor:pointer">
+            <td>{{event.year}}</td><td>{{event.short_name}} {{event.event_type_string}}</td><td>{{event.location}}</td><td>{{event.start_date}}</td>
+        </tr>
+    </table>
+</div>
