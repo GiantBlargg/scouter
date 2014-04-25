@@ -2,7 +2,7 @@
  * @author Daniel
  */
 define(["angular", "remoteStorage", "app/Object2Array", "ngRoute", "app/RSModule"], function(angular, remoteStorage, Object2Array) {
-    angular.module("main", ["ngRoute"]).config(function($routeProvider) {
+    angular.module("main", ["ngRoute", "ngResource"]).config(function($routeProvider) {
         $routeProvider.when("/dash", {
             templateUrl : "views/dash.html"
         }).when("/events", {
@@ -18,10 +18,17 @@ define(["angular", "remoteStorage", "app/Object2Array", "ngRoute", "app/RSModule
         $scope.path = function(path) {
             return $location.path().indexOf(path) > -1;
         };
-    }).controller("EventList", function($scope, $location) {
+    }).controller("EventList", function($scope, $location, $resource) {
         $scope.goTo = function(id) {
             $location.path('/events/' + id);
         };
+        $scope.remoteLoad = $resource("http://www.thebluealliance.com/api/v2/events/:year", {
+            year : function() {
+                return new Date().getFullYear();
+            },
+            "X-TBA-App-Id" : "frc5116:Scouter:0.0.0"
+        });
+        $scope.remote = $scope.remoteLoad.query();
         $scope.events = Object2Array({
             "2014abca" : {
                 "end_date" : "2014-04-05",
