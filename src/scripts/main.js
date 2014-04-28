@@ -22,6 +22,25 @@ define(["angular", "remoteStorage", "app/Object2Array", "ngRoute", "app/RSModule
         $scope.goTo = function(id) {
             $location.path('/events/' + id);
         };
+        $scope.pop = function(id) {
+            var event = $resource("http://www.thebluealliance.com/api/v2/event/:id", {
+                id : id,
+                "X-TBA-App-Id" : "frc5116:Scouter:0.0.0"
+            }).get(function() {
+                remoteStorage.FRCScouting.addEvent(id, {
+                    "end_date" : event.end_date,
+                    "short_name" : event.short_name,
+                    "official" : event.official,
+                    "location" : event.location,
+                    "event_code" : event.event_code,
+                    "year" : event.year,
+                    "event_type_string" : event.event_type_string,
+                    "start_date" : event.start_date,
+                    "event_type" : event.event_type,
+                    "teams" : ["team1","team2"]
+                });
+            });
+        };
         $scope.remote = $resource("http://www.thebluealliance.com/api/v2/events/:year", {
             year : function() {
                 return new Date().getFullYear();
