@@ -87,8 +87,11 @@ define(["remoteStorage"], function(remoteStorage) {
                 listTeams : function() {
                     return teamClient.getAll("");
                 },
-                listEvents : function () {
+                listEvents : function() {
                     return eventClient.getAll("");
+                },
+                addEvent : function(id, data) {
+                    return eventClient.storeObject('Event', id, data);
                 }
             }
         };
